@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Kafka Integration</title>
+</head>
+<body>
+    <h1>Flask Kafka Integration</h1>
+    <h1>Data monitoring</h1>
+    <button id="produceBtn">Produce Data</button>
+
+    <script>
+        document.getElementById('produceBtn').addEventListener('click', function() {
+            // Make AJAX request to Flask route to trigger data production
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/produce_data', true);
+            xhr.send();
+
+            // Optionally, handle response from Flask server
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    alert('Data production started successfully!');
+                } else {
+                    alert('Failed to start data production.');
+                }
+            };
+        });
+    </script>
+</body>
+</html>
